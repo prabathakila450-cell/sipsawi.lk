@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-sdk tools:overrideLibrary="com.google.android.gms.common, com.google.android.gms.base, com.google.android.gms.tasks, com.google.android.gms.ads, com.google.android.gms.ads.lite, com.google.android.gms.ads.impl, com.google.firebase, com.google.firebase.firestore, com.google.firebase.common, com.google.firebase.components, com.google.firebase.ai, com.google.firebase.ai.ondevice.interop, com.google.firebase.appcheck, com.google.firebase.database, com.google.firebase.auth, com.google.firebase.datatransport" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

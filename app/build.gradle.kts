@@ -15,7 +15,7 @@ android {
 
   defaultConfig {
     applicationId = "com.aistudio.studentportal.slnotes"
-    minSdk = 23
+    minSdk = 21
     targetSdk = 35
     versionCode = 3
     versionName = "1.2"

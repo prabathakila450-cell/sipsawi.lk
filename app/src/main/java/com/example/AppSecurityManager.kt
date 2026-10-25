@@ -139,11 +139,7 @@ object AppSecurityManager {
   fun applyScreenProtection(activity: Activity, isEnabled: Boolean) {
     try {
       activity.runOnUiThread {
-        if (isEnabled) {
-          activity.window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
-        } else {
-          activity.window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
-        }
+        activity.window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
       }
     } catch (_: Exception) {}
   }

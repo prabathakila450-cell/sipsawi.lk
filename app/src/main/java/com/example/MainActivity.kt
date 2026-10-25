@@ -539,15 +539,7 @@ class MainActivity : ComponentActivity() {
     AdMobManager.startInterstitialTimer(this)
 
     setContent {
-      var showSplash by remember { mutableStateOf(true) }
-      LaunchedEffect(Unit) {
-        kotlinx.coroutines.delay(1000)
-        showSplash = false
-      }
-      
-      if (showSplash) {
-        SplashScreen()
-      } else {
+      MyApplicationTheme(eyeCareMode = EyeCareThemeMode.LIGHT) {
         StudentPortalApp()
       }
     }
@@ -2145,6 +2137,11 @@ fun StudentPortalApp() {
               onOpenGeographyAutoCheck = {
                 requireFeatureAccess {
                   currentScreen = "GEOGRAPHY_AUTO_CHECKER"
+                }
+              },
+              onOpenMathQuizMaster = {
+                requireFeatureAccess {
+                  currentScreen = "MATH_4000_QUIZ"
                 }
               },
               onOpenSpecialMasterFeatures = { section ->
@@ -6754,7 +6751,7 @@ fun getNotesForGrade(grade: String): List<ShortNoteItem> {
       englishShortNoteAllGrades, englishWritingNoteGr10_11, englishShortNoteGr09_11,
       mathSanduTheoryMasterNotes, mathGeometryNote, mathNoteGr11Custom,
       scienceNoteGr11, scienceNoteGr11Custom, science500QuestionsNoteGr11, scienceDiagramsNotesGr10_11,
-      historyNote, historyMapsNoteAllGrades, historyTablesNoteGr10_11, historyNoteGr11Custom,
+      historyNote, historyTablesNoteGr10_11, historyNoteGr11Custom,
       buddhismNote, buddhismNoteGr11Custom, geoNoteGr11, geoNoteGr11Custom, civicNoteGr11, civicNoteGr11Custom, commerceSanduTheoryMasterNotes, ictNote,
       agriNoteGr11, healthNote, danceNote, danceNoteGr11Custom, musicNoteGr10_11_1, musicNoteGr10_11_2, musicNoteGr11Custom,
       artNoteGr10_11, artNoteGr11Custom, dramaNoteGr10_11
@@ -6969,7 +6966,7 @@ fun getNotesForGrade(grade: String): List<ShortNoteItem> {
       englishShortNoteAllGrades, englishWritingNoteGr10_11, englishShortNoteGr09_11,
       mathSanduTheoryMasterNotes, mathGeometryNote, mathNoteGr10Custom,
       scienceNoteGr10, scienceNoteGr10Custom, scienceDiagramsNotesGr10_11,
-      historyNoteGr10, historyNoteGr10Custom, historyMapsNoteAllGrades, historyTablesNoteGr10_11,
+      historyNoteGr10, historyNoteGr10Custom, historyTablesNoteGr10_11,
       buddhismNoteGr10, buddhismNoteGr10Custom, geoNoteGr10, geoNoteGr10Custom, civicNoteGr10, civicNoteGr10Custom, commerceSanduTheoryMasterNotes, ictNote,
       agriNote, healthNoteGr10, danceNote, danceNoteGr10Custom, musicNoteGr10_11_1, musicNoteGr10_11_2, musicNoteGr10Custom,
       artNoteGr10Custom, dramaNoteGr10_11
@@ -7159,7 +7156,7 @@ fun getNotesForGrade(grade: String): List<ShortNoteItem> {
       sinhalaNoteGr09, mathNoteGr09, scienceNoteGr09, historyNoteGr09, buddhismNoteGr09,
       geoNoteGr09, civicNoteGr09, commNoteGr09, ictNoteGr09, ptsNoteGr09, healthNoteGr09,
       engNoteGr09, musicNoteGr09, danceNoteGr09, artNoteGr09,
-      sinhalaGrammarNote, historyMapsNoteAllGrades,
+      sinhalaGrammarNote,
       englishShortNoteAllGrades, englishShortNoteGr09_11
     )
   } else if (grade == "08" || grade == "8" || grade == "07" || grade == "7" || grade == "06" || grade == "6") {
@@ -7337,12 +7334,11 @@ fun getNotesForGrade(grade: String): List<ShortNoteItem> {
       sinhalaNote, mathNote, scienceNote, historyNote, buddhismNote,
       geoNote, civicNote, ictNote, ptsNote, healthNote,
       engNote, musicNote, danceNote, artNote,
-      sinhalaGrammarNote, historyMapsNoteAllGrades, englishShortNoteAllGrades
+      sinhalaGrammarNote, englishShortNoteAllGrades
     )
   } else {
     return listOf(
       sinhalaGrammarNote,
-      historyMapsNoteAllGrades,
       englishShortNoteAllGrades
     )
   }

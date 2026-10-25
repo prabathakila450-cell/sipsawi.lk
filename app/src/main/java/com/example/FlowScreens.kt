@@ -126,6 +126,7 @@ fun GradesHomeScreen(
   onOpenInteractiveQaHub: (QaHubTab) -> Unit = {},
   onOpenVoiceDoubtSolver: () -> Unit = {},
   onOpenMistakeNotebook: () -> Unit = {},
+  onOpenMathQuizMaster: () -> Unit = {},
   isFeatureTrialActive: Boolean = true,
   isApproved: Boolean = false,
   remainingTrialHours: Int = 24
@@ -345,6 +346,88 @@ fun GradesHomeScreen(
               Icons.AutoMirrored.Filled.ArrowForward,
               contentDescription = "Open",
               tint = Color(0xFF38BDF8),
+              modifier = Modifier.size(18.dp)
+            )
+          }
+        }
+
+        // NEW FEATURE: 🔢 Math Quiz Master 4000 Hero Banner (App Home Screen)
+        Card(
+          shape = RoundedCornerShape(16.dp),
+          colors = CardDefaults.cardColors(containerColor = Color(0xFF1E1B4B)),
+          border = BorderStroke(1.2.dp, Color(0xFF818CF8)),
+          modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(16.dp))
+            .clickable { onOpenMathQuizMaster() }
+            .testTag("home_math_quiz_master_card")
+        ) {
+          Row(
+            modifier = Modifier
+              .fillMaxWidth()
+              .background(
+                Brush.horizontalGradient(
+                  colors = listOf(
+                    Color(0xFF0F172A),
+                    Color(0xFF1E1B4B),
+                    Color(0xFF312E81)
+                  )
+                )
+              )
+              .padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+          ) {
+            Row(
+              verticalAlignment = Alignment.CenterVertically,
+              modifier = Modifier.weight(1f)
+            ) {
+              Box(
+                modifier = Modifier
+                  .size(42.dp)
+                  .clip(CircleShape)
+                  .background(Color(0xFF4F46E5)),
+                contentAlignment = Alignment.Center
+              ) {
+                Text("🔢", fontSize = 20.sp)
+              }
+              Spacer(modifier = Modifier.width(10.dp))
+              Column {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                  Text(
+                    text = "ගණිතය ක්විස් මාස්ටර් (ප්‍රශ්න 4,000)",
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = Color.White
+                  )
+                  Spacer(modifier = Modifier.width(6.dp))
+                  Surface(
+                    shape = RoundedCornerShape(4.dp),
+                    color = Color(0xFF6366F1)
+                  ) {
+                    Text(
+                      text = "MATH 4,000",
+                      fontSize = 8.sp,
+                      fontWeight = FontWeight.ExtraBold,
+                      color = Color.White,
+                      modifier = Modifier.padding(horizontal = 4.dp, vertical = 1.dp)
+                    )
+                  }
+                }
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(
+                  text = "10 සහ 11 ශ්‍රේණි • කාණ්ඩ 80 බැගින් ප්‍රශ්න සෙට් 25 • 100% නිවැරදි",
+                  fontSize = 10.sp,
+                  color = Color(0xFFC7D2FE),
+                  maxLines = 1,
+                  overflow = TextOverflow.Ellipsis
+                )
+              }
+            }
+            Icon(
+              Icons.AutoMirrored.Filled.ArrowForward,
+              contentDescription = "Open",
+              tint = Color(0xFF818CF8),
               modifier = Modifier.size(18.dp)
             )
           }
@@ -2050,17 +2133,7 @@ fun SubjectContentScreen(
         }
 
         isHistory -> {
-          // ඉතිහාසය: සිතියම් (History Maps Auto-Check), රචනා (Structured Essays), කාලරේඛා (Timelines), නිර්දේශය (Syllabus)
-          tools.add(
-            SubjectQuickAction(
-              icon = "🗺️",
-              label = "සිතියම්",
-              bgColor = Color(0xFFECFDF5),
-              borderColor = Color(0xFFA7F3D0),
-              textColor = Color(0xFF047857),
-              onClick = onOpenHistoryMapsAutoCheck
-            )
-          )
+          // ඉතිහාසය: රචනා (Structured Essays), කාලරේඛා (Timelines), නිර්දේශය (Syllabus)
           tools.add(
             SubjectQuickAction(
               icon = "📝",
